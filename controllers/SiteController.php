@@ -59,7 +59,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
+   public function actionIndex()
     {
         return $this->render('index');
     }
@@ -124,5 +124,16 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionHello()
+    {
+        return $this->render('hello');
+//        return 'Hello World!';
+    }
+
+    public function actionHello2()
+    {
+        return 'Hello World2';
     }
 }
