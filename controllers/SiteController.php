@@ -61,8 +61,7 @@ class SiteController extends Controller
      */
    public function actionIndex()
     {
-//        return $this->render('index');
-       return 'VideoSchool';
+        return $this->render('index');
     }
 
     /**
