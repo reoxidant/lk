@@ -64,12 +64,22 @@ class SiteController extends Controller
         return $this->render('hello');
     }
 
+    public function actionJoin()
+    {
+        return $this->render('hello');
+    }
+
+    public function actionLogin()
+    {
+        return $this->render('hello');
+    }
+
     /**
      * Login action.
      *
      * @return Response|string
      */
-    public function actionLogin()
+    public function actionLoginOld()
     {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
@@ -91,7 +101,7 @@ class SiteController extends Controller
      *
      * @return Response
      */
-    public function actionLogout()
+    public function actionLogoutOld()
     {
         Yii::$app->user->logout();
 
