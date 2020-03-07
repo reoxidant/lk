@@ -66,12 +66,12 @@ class SiteController extends Controller
 
     public function actionJoin()
     {
-        return $this->render('hello');
+        return $this->render('join');
     }
 
     public function actionLogin()
     {
-        return $this->render('hello');
+        return $this->render('login');
     }
 
     /**

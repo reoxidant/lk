@@ -6,8 +6,8 @@ $I->see('Welcome', 'h1');
 $I->seeLink('Join', '/site/join');
 $I->seeLink('Login', '/site/login');
 
-$I->amOnPageI('/site/join');
+$I->amOnPage('/site/join');
 $I->see('Join us', 'h1');
 
-$I->amOnPageI('/site/login');
+$I->amOnPage('/site/login');
 $I->see('Log in', 'h1');
