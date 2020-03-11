@@ -59,9 +59,13 @@ class SiteController extends Controller
      *
      * @return string
      */
-   public function actionIndex()
+    public function actionIndex()
     {
-        return $this->render('index');
+        Yii::trace('I am Here!', "site");
+        Yii::warning('Low memory!', "site");
+        Yii::error("Fatalist site", "site");
+        Yii::info("some information");
+        return $this->render('hello');
     }
 
     /**
@@ -69,7 +73,7 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
-    public function actionLogin()
+    public function actionLoginOld()
     {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
@@ -91,7 +95,7 @@ class SiteController extends Controller
      *
      * @return Response
      */
-    public function actionLogout()
+    public function actionLogoutOld()
     {
         Yii::$app->user->logout();
 
