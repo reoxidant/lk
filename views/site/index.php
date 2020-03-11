@@ -10,6 +10,7 @@ $this->title = 'My Yii Application';
         <h1>Добро пожаловать, гость!</h1>
         <p class="lead">You have successfully created your Yii-powered application.</p>
         <p><a class="btn btn-lg btn-success" href="https://github.com/reoxidant/lk/">GitHub Project</a></p>
+        <p><a class="btn btn-lg btn-success" href="https://vk.com/soulmomental">To write me in VK</a></p>
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div>
 
