@@ -1,17 +1,19 @@
-<h1>Hello World!</h1>
-<?= $this->render('inc')?>
-<?= $this->render('//inc/test.html')?>
-<p><?= $name ?></p>
-<p><?= $age ?></p>
-<p><?= $this->context->my_var?></p>
-<p><?= $this->params['t1']?></p>
+<?php
 
-<p><? $this->params['t2'] = "T2 params"?></p>
-<p><?= $this->params['t2']?></p>
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
 
-<? $this->beginBlock('block1'); ?>
+?>
 
-    <p><?= $this->params['t2']?></p>
-    <p>...содержимое блока 1...</p>
+<div class="col-md-12">
+    <h2>Страница с формой!</h2>
+    <?php $form = \yii\bootstrap\ActiveForm::begin()?>
+        <?= $form->field($model, 'name');?>
+        <?= $form->field($model, 'email');?>
+        <?= $form->field($model, 'text')->textarea(['rows' => 3])?>
 
-<? $this->endBlock(); ?>
+        <div class="form-group">
+            <?= Html::submitButton('Отправить', ['class' => 'btn btn-default'])?>
+        </div>
+    <?php \yii\bootstrap\ActiveForm::end()?>
+</div>

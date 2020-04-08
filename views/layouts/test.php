@@ -14,11 +14,16 @@ $this->beginPage();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <? $this->registerCsrfMetaTags();?>
     <title><?= Html::encode($this->title) ?></title>
+    <?php $this->head() ?>
 </head>
 <body>
     <?$this->beginBody()?>
 
-    <?=$content?>
+    <div class="container">
+        <div class="row">
+            <?=$content?>
+        </div>
+    </div>
 
     <?$this->endBody()?>
 </body>

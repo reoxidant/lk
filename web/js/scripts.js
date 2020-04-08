@@ -1,4 +1,2 @@
-$(function(){
-    alert('123');
-});
+$(function(){});
 

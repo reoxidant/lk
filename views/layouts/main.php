@@ -66,20 +66,7 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </div>
-<p>
-    <?php if(isset($this->context->my_var)):?>
-        <p><?=$this->context->my_var;?></p>
-    <?php endif;?>
-    <?php if(isset($this->params['t1'])):?>
-        <p><?= $this->params['t1'];?></p>
-    <?php endif;?>
-    <?php if(isset($this->params['t2'])):?>
-        <p><?= $this->params['t2'];?></p>
-    <?php endif;?>
-    <?php if(isset($this->blocks['block1'])):?>
-        <p><?= $this->blocks['block1'];?></p>
-    <?php endif;?>
-</p>
+
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
