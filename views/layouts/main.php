@@ -67,13 +67,18 @@ AppAsset::register($this);
     </div>
 </div>
 <p>
-    <?php
-        if(isset($this->context->my_var)){
-            echo $this->context->my_var;
-        }else if(isset($this->params['t1'])){
-            echo $this->params['t1'];
-        };
-    ?>
+    <?php if(isset($this->context->my_var)):?>
+        <p><?=$this->context->my_var;?></p>
+    <?php endif;?>
+    <?php if(isset($this->params['t1'])):?>
+        <p><?= $this->params['t1'];?></p>
+    <?php endif;?>
+    <?php if(isset($this->params['t2'])):?>
+        <p><?= $this->params['t2'];?></p>
+    <?php endif;?>
+    <?php if(isset($this->blocks['block1'])):?>
+        <p><?= $this->blocks['block1'];?></p>
+    <?php endif;?>
 </p>
 <footer class="footer">
     <div class="container">

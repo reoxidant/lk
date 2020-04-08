@@ -10,6 +10,7 @@ $config = [
         'debug',
         'log'
     ],
+//    'layout' => "test",
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
