@@ -3,3 +3,4 @@
 <?= $this->render('//inc/test.html')?>
 <p><?= $name ?></p>
 <p><?= $age ?></p>
+<p><?= $this->params['t1']?></p>

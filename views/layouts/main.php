@@ -66,7 +66,15 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </div>
-
+<p>
+    <?php
+        if(isset($this->context->my_var)){
+            echo $this->context->my_var;
+        }else if(isset($this->params['t1'])){
+            echo $this->params['t1'];
+        };
+    ?>
+</p>
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
