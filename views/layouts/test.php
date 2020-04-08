@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 $this->beginPage();
 
+\app\assets\TestAssets::register($this);
 ?>
 <!doctype html>
 <html lang="<?= Yii::$app->language ?>">
