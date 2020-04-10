@@ -9,6 +9,7 @@ class Country extends ActiveRecord
 {
     public static function tableName()
     {
+        //% - use prefix
         return '{{%countries}}';
     }
 }
