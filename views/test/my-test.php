@@ -1,4 +1,4 @@
-<?php $this->title = "Моя тестовая страничка";?>
+<?php $this->title = "Моя тестовая страничка"; ?>
 
 <?
 
@@ -7,7 +7,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => 'мета опис
 
 ?>
 
-<p><code><? __FILE__ ?></code></p>
+    <p><code><? __FILE__ ?></code></p>
 
 <?php //$this->registerJsFile('@web/js/scripts.js', ['depends' => 'yii\web\YiiAsset']);?>
 

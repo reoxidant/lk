@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+
 use app\models\EntryForm;
 
 class TestController extends AppController
@@ -14,14 +15,17 @@ class TestController extends AppController
 
         $model = new EntryForm();
 
-        if($model->load(\Yii::$app->request->post()) && $model->validate()){
-            if(\Yii::$app->request->isPjax){
-                \Yii::$app->session->setFlash('success', 'Данные успешно отправлены и приняты через Pjax!');
-                $model = new EntryForm();
-            }else{
-                \Yii::$app->session->setFlash('success', 'Данные успешно отправлены Get запросом!');
-                return $this->refresh();
-            }
+        if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
+            \Yii::$app->session->setFlash('success', 'Данные успешно отправлены Get запросом!');
+            return $this->refresh();
+
+            /*  if(\Yii::$app->request->isPjax){
+                  \Yii::$app->session->setFlash('success', 'Данные успешно отправлены и приняты через Pjax!');
+                  $model = new EntryForm();
+              }else{
+                  \Yii::$app->session->setFlash('success', 'Данные успешно отправлены Get запросом!');
+                  return $this->refresh();
+              }*/
         }
 
         return $this->render(
@@ -30,7 +34,8 @@ class TestController extends AppController
         );
     }
 
-    public function actionMyTest(){
+    public function actionMyTest()
+    {
         return $this->render('my-test');
     }
 }
