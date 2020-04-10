@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 use app\models\EntryForm;
+use Yii;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 class TestController extends AppController
 {
@@ -15,23 +18,18 @@ class TestController extends AppController
 
         $model = new EntryForm();
 
-        if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
-            \Yii::$app->session->setFlash('success', 'Данные успешно отправлены Get запросом!');
-            return $this->refresh();
-
-            /*  if(\Yii::$app->request->isPjax){
-                  \Yii::$app->session->setFlash('success', 'Данные успешно отправлены и приняты через Pjax!');
-                  $model = new EntryForm();
-              }else{
-                  \Yii::$app->session->setFlash('success', 'Данные успешно отправлены Get запросом!');
-                  return $this->refresh();
-              }*/
+        $model->load(Yii::$app->request->post());
+        if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if ($model->validate()) {
+                return ['message' => 'ok'];
+            } else {
+                return ActiveForm::validate($model);
+            }
+//            return ActiveForm::validate($model);
         }
 
-        return $this->render(
-            'index',
-            compact('model')
-        );
+        return $this->render('index', compact('model'));
     }
 
     public function actionMyTest()
