@@ -71,7 +71,7 @@ class TestController extends AppController
 //        $countries = Country::find()->count();
 //        debug($countries, 1);
 
-        //Получаем данные одной запись
+        //Получаем все данные, потом берем последний методом one. При оптимизации нужно сделать через метод limit
 //        $countries = Country::find()->limit(1)->where(['code' => 'RU'])->one();
 
         //Аналог функции Country::find()->all();
@@ -81,7 +81,7 @@ class TestController extends AppController
 //        $countries = Country::findOne(['code' => 'DE', 'status' => 1]);
 
         //Экононмим память, выводя не обьет, а массив
-        $countries = Country::find()->asArray()->all();
+//        $countries = Country::find()->asArray()->all();
 
         return $this->render('country', compact('countries'));
     }
