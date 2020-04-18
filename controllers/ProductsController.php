@@ -10,7 +10,7 @@ class ProductsController extends AppController
     {
         $this->view->title = "All Products";
 
-        $products = Products::find()->all();
+        $products = Products::find()->with('class')->all();
 
         return $this->render('index', compact('products'));
     }

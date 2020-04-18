@@ -13,7 +13,7 @@ if (is_array($class_products)):
                 <th scope="col">Цена</th>
             </tr>
         </thead>
-            <? foreach ($class->products as $product):?>
+            <? foreach ($class->getProducts()->all() as $product):?>
                 <tr>
                     <th scope="row"><?= $i++ ?></th>
                     <td><?= $product->title?></td>

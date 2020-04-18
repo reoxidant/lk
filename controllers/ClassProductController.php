@@ -19,6 +19,9 @@ class ClassProductController extends AppController
     {
         $class_products = ClassProduct::findOne($id);
         $this->view->title = "Class: ($class_products->title)";
-        return $this->render('show-class', compact('class_products'));
+
+        $products = $class_products->getProducts(50000)->all();
+
+        return $this->render('show-class', compact('class_products', 'products'));
     }
 }

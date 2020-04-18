@@ -15,7 +15,7 @@
             <td><?= $product->title?></td>
             <td><?= $product->year?></td>
             <td><?= $product->price?></td>
-            <td><?= $product->class->title?></td>
+<!--            <td>--><?//= $product->class->title?><!--</td>-->
         </tr>
         <? endforeach;?>
     </table>

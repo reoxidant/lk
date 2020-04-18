@@ -9,7 +9,7 @@
         <th scope="col">Цена</th>
     </tr>
     </thead>
-    <? foreach ($class_products->products as $product):?>
+    <? foreach ($products as $product):?>
         <tr>
             <th scope="row"><?=$counter++ ?></th>
             <td><?= $product->title?></td>

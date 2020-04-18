@@ -12,8 +12,8 @@ class ClassProduct extends ActiveRecord
         return '{{%class_products}}';
     }
 
-    public function getProducts()
+    public function getProducts($price = 100000)
     {
-        return $this->hasMany(Products::class, ['class_id' => 'id']);
+        return $this->hasMany(Products::class, ['class_id' => 'id'])->where('price < :price', [':price' => $price])->orderBy('price DESC');
     }
 }
