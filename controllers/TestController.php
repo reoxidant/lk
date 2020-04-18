@@ -6,6 +6,7 @@ use app\models\Country;
 use app\models\EntryForm;
 use Yii;
 use yii\web\Response;
+use yii\web\ResponseFormatterInterface;
 use yii\widgets\ActiveForm;
 
 class TestController extends AppController
@@ -81,7 +82,7 @@ class TestController extends AppController
 //        $countries = Country::findOne(['code' => 'DE', 'status' => 1]);
 
         //Экононмим память, выводя не обьет, а массив
-//        $countries = Country::find()->asArray()->all();
+        $countries = Country::find()->asArray()->all();
 
         return $this->render('country', compact('countries'));
     }
@@ -89,5 +90,41 @@ class TestController extends AppController
     public function actionMyTest()
     {
         return $this->render('my-test');
+    }
+
+    public function actionCreateNewCountry()
+    {
+        $this->layout = 'test';
+        $this->view->title = "Add new country to Database";
+
+        $country = new Country();
+
+        if(\Yii::$app->request->isAjax){
+            $country->load(\Yii::$app->request->post());
+            \Yii::$app->response->format = Response::FORMAT_JSON;
+            if($country->validate()){
+                return ['message' => "ok"];
+            }else{
+                return ActiveForm::validate($country);
+            }
+        }
+
+        if($country->load(\Yii::$app->request->post()) && $country->save()){
+            \Yii::$app->session->setFlash('success', 'OK');
+            $country->refresh();
+        }
+
+  /*      $country->code = 'ES';
+        $country->name = 'Spain';
+        $country->population = 47007367;
+        $country->status = 1;
+  */
+/*        if($country->save()){
+            \Yii::$app->session->setFlash('success', 'OK');
+        }else{
+            \Yii::$app->session->setFlash('danger', 'OK');
+        }*/
+
+        return $this->render('create-new-country', compact('country'));
     }
 }
