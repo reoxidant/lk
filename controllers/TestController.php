@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Country;
 use app\models\EntryForm;
 use Yii;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\web\ResponseFormatterInterface;
 use yii\widgets\ActiveForm;
@@ -99,32 +100,71 @@ class TestController extends AppController
 
         $country = new Country();
 
-        if(\Yii::$app->request->isAjax){
+        if (\Yii::$app->request->isAjax) {
             $country->load(\Yii::$app->request->post());
             \Yii::$app->response->format = Response::FORMAT_JSON;
-            if($country->validate()){
+            if ($country->validate()) {
                 return ['message' => "ok"];
-            }else{
+            } else {
                 return ActiveForm::validate($country);
             }
         }
 
-        if($country->load(\Yii::$app->request->post()) && $country->save()){
+        if ($country->load(\Yii::$app->request->post()) && $country->save()) {
             \Yii::$app->session->setFlash('success', 'OK');
             $country->refresh();
         }
 
-  /*      $country->code = 'ES';
-        $country->name = 'Spain';
-        $country->population = 47007367;
-        $country->status = 1;
-  */
-/*        if($country->save()){
-            \Yii::$app->session->setFlash('success', 'OK');
-        }else{
-            \Yii::$app->session->setFlash('danger', 'OK');
-        }*/
+        /*      $country->code = 'ES';
+              $country->name = 'Spain';
+              $country->population = 47007367;
+              $country->status = 1;
+        */
+        /*        if($country->save()){
+                    \Yii::$app->session->setFlash('success', 'OK');
+                }else{
+                    \Yii::$app->session->setFlash('danger', 'error');
+                }*/
 
         return $this->render('create-new-country', compact('country'));
+    }
+
+    public function actionUpdate()
+    {
+        $this->layout = 'test';
+        $this->view->title = 'Update Country';
+
+        $country = Country::findOne('RU');
+        if (!$country) {
+            throw new NotFoundHttpException('Country not found!');
+        }
+
+        if ($country->load(\Yii::$app->request->post()) && $country->save()) {
+            \Yii::$app->session->setFlash('success', 'ok');
+            $country->refresh();
+        }
+
+        return $this->render('update', compact('country'));
+    }
+
+    public function actionDelete($code = '')
+    {
+        $this->layout = 'test';
+        $this->view->title = 'Delete Country';
+
+        $country = Country::findOne($code);
+
+        if($country){
+            if(false !== $country->delete()){
+                \Yii::$app->session->setFlash('success', 'Country has been deleted');
+            }else{
+                \Yii::$app->session->setFlash('danger', 'Count not to delete that country');
+            }
+        }else{
+            \Yii::$app->session->setFlash('danger', 'That country in not exist!');
+        }
+
+
+        return $this->render('delete', compact('country'));
     }
 }
