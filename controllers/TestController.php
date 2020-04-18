@@ -4,15 +4,13 @@ namespace app\controllers;
 
 use app\models\Country;
 use app\models\EntryForm;
-use Yii;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
-use yii\web\ResponseFormatterInterface;
 use yii\widgets\ActiveForm;
 
 class TestController extends AppController
 {
-    public function actionIndex($name = 'guest', $age = 25)
+    public function actionIndex($alert = "", $name = 'guest', $age = 25)
     {
         $this->layout = 'test';
         $this->view->title = "Test Page";
@@ -21,16 +19,35 @@ class TestController extends AppController
 
         $model = new EntryForm();
 
-        $model->load(Yii::$app->request->post());
-        if (Yii::$app->request->isAjax) {
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            if ($model->validate()) {
-                return ['message' => 'ok'];
-            } else {
-                return ActiveForm::validate($model);
-            }
-//            return ActiveForm::validate($model);
+
+        switch ($alert) {
+            case 'error':
+                \Yii::$app->session->setFlash('error', 'Error');
+                break;
+            case "success":
+                \Yii::$app->session->setFlash('success', "OK");
+                break;
+            case "info":
+                \Yii::$app->session->setFlash('info', "Info");
+                break;
+            case "warning":
+                \Yii::$app->session->setFlash('warning', "Warning");
+                break;
+            default:
+                \Yii::$app->session->setFlash('danger', "Danger");
         }
+
+
+        /*        $model->load(Yii::$app->request->post());
+                if (Yii::$app->request->isAjax) {
+                    Yii::$app->response->format = Response::FORMAT_JSON;
+                    if ($model->validate()) {
+                        return ['message' => 'ok'];
+                    } else {
+                        return ActiveForm::validate($model);
+                    }
+                    return ActiveForm::validate($model);
+                }*/
 
         return $this->render('index', compact('model'));
     }
@@ -154,13 +171,13 @@ class TestController extends AppController
 
         $country = Country::findOne($code);
 
-        if($country){
-            if(false !== $country->delete()){
+        if ($country) {
+            if (false !== $country->delete()) {
                 \Yii::$app->session->setFlash('success', 'Country has been deleted');
-            }else{
+            } else {
                 \Yii::$app->session->setFlash('danger', 'Count not to delete that country');
             }
-        }else{
+        } else {
             \Yii::$app->session->setFlash('danger', 'That country in not exist!');
         }
 
