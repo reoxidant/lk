@@ -1,6 +1,5 @@
 <div class="col-md-12">
     <h1>Тестовая модель бд Country</h1>
-    <?php //debug($countries, 1)?>
 
     <? if (is_object($countries)): ?>
         <table class="table">

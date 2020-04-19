@@ -1,4 +1,5 @@
 <?php
+
 if (is_array($class_products)):
     foreach ($class_products as $class):
         $i = 1;
@@ -27,6 +28,5 @@ if (is_array($class_products)):
 else:
     debug($class_products);
 endif;
-
 
 ?>

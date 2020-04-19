@@ -10,14 +10,10 @@ $config = [
         'debug',
         'log'
     ],
-//    'layout' => "test",
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
     ],
-    /*'controllerMap' => [
-      'test' => 'app\controllers\SiteController',
-    ],*/
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -56,8 +52,7 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
-//                'class-product/show-class/<id:\d+>' => 'class-product/show-class'
-//                'class-product/<id:\d+>' => 'class-product/show-class'
+                //rules for router
                 "class-product/<alias>" => 'class-product/show-class'
             ]
         ]

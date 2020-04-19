@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use app\models;
 use yii\db\ActiveRecord;
 
 class Products extends ActiveRecord

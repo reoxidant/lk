@@ -8,7 +8,6 @@ use yii\web\AssetBundle;
 
 class TestAssets extends AssetBundle
 {
-//    public $sourcePath = '@app/components';
 
     public $basePath = '@webroot';
     public $baseUrl = '@web';
@@ -18,8 +17,7 @@ class TestAssets extends AssetBundle
     ];
 
     public $js = [
-//        'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js',
-//        'js/scripts.js'
+        //source to js scripts
     ];
 
     public $depends = [
