@@ -1,6 +1,8 @@
 <?
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 ?>
 <div class="col-md-12">
     <div class="col-md-5 col-md-offset-2">
@@ -63,11 +65,11 @@ use yii\widgets\ActiveForm;
 
         <div class="form-group">
             <div class="col-md-5 col-md-offset-2">
-                <?= Html::submitButton('Отправить', ['class' => 'btn btn-default btn-block'])?>
+                <?= Html::submitButton('Отправить', ['class' => 'btn btn-default btn-block']) ?>
             </div>
         </div>
 
-        <?php ActiveForm::end();?>
+        <?php ActiveForm::end(); ?>
     </div>
 </div>
 

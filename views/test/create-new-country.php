@@ -1,6 +1,8 @@
 <?
-    use yii\helpers\Html;
-    use yii\widgets\ActiveForm;
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
 ?>
 <div class="col-md-12">
     <div class="col-md-5 col-md-offset-2">
@@ -27,7 +29,6 @@
     </div>
 
 
-
     <div class="col-md-12">
         <?php
         $form = ActiveForm::begin([
@@ -52,25 +53,25 @@
         <?= $form->field($country, 'population') ?>
         <?= $form->field($country, 'status')->checkbox(
             [
-            'template' =>
-            "
+                'template' =>
+                    "
                 {label} \n 
                 <div class='col-md-5'>{input}</div> \n 
                 <div class='col-md-5'>{hint}</div> \n
                 <div class='col-md-5'>{error}</div>
             ",
-            'labelOptions' => ['class' => 'col-md-2 control-label']
+                'labelOptions' => ['class' => 'col-md-2 control-label']
             ],
             false
         ) ?>
 
         <div class="form-group">
             <div class="col-md-5 col-md-offset-2">
-                <?= Html::submitButton('Отправить', ['class' => 'btn btn-default btn-block'])?>
+                <?= Html::submitButton('Отправить', ['class' => 'btn btn-default btn-block']) ?>
             </div>
         </div>
 
-        <?php ActiveForm::end();?>
+        <?php ActiveForm::end(); ?>
     </div>
 </div>
 

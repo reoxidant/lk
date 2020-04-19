@@ -15,7 +15,8 @@ class ProductsController extends AppController
         return $this->render('index', compact('products'));
     }
 
-    public function actionShowProduct($id = null){
+    public function actionShowProduct($id = null)
+    {
 
         $product = Products::findOne($id);
 

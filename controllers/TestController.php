@@ -37,18 +37,6 @@ class TestController extends AppController
                 \Yii::$app->session->setFlash('danger', "Danger");
         }
 
-
-        /*        $model->load(Yii::$app->request->post());
-                if (Yii::$app->request->isAjax) {
-                    Yii::$app->response->format = Response::FORMAT_JSON;
-                    if ($model->validate()) {
-                        return ['message' => 'ok'];
-                    } else {
-                        return ActiveForm::validate($model);
-                    }
-                    return ActiveForm::validate($model);
-                }*/
-
         return $this->render('index', compact('model'));
     }
 
@@ -56,48 +44,6 @@ class TestController extends AppController
     {
         $this->layout = 'country';
         $this->view->title = "Тестовая модель бд Country";
-
-        //Получение данных, строковый формат
-//        $countries = Country::find()->all();
-//        $countries = Country::find()->where("population < 100000000 AND code <> 'DE'")->all();
-
-        //Защита от SQL инъекции, привязка параметров
-        /*$countries = Country::find()->where(
-
-            "population < :population AND code <> :code",
-            [
-                ':population' => 100000000,
-                ':code' => 'DE'
-            ]
-        )->all();*/
-
-        //Получение данных, формат массива
-        /*$countries = Country::find()->where(
-            [
-                'code' => ['DE', 'FR', 'AU'],
-                'status' => 1
-            ]
-        )->all();*/
-
-        //Получение данных, Формат операторов
-        /*$countries = Country::find()->where(
-            ['like', 'name', 'ni']
-        )->all();*/
-
-//        $countries = Country::find()->orderBy('population DESC')->all();
-
-        //Получаем число запись
-//        $countries = Country::find()->count();
-//        debug($countries, 1);
-
-        //Получаем все данные, потом берем последний методом one. При оптимизации нужно сделать через метод limit
-//        $countries = Country::find()->limit(1)->where(['code' => 'RU'])->one();
-
-        //Аналог функции Country::find()->all();
-//        $countries = Country::findAll(['DE', 'RU', "CN"]);
-
-        //Аналог функции Country::find()->one();
-//        $countries = Country::findOne(['code' => 'DE', 'status' => 1]);
 
         //Экононмим память, выводя не обьет, а массив
         $countries = Country::find()->asArray()->all();
@@ -131,17 +77,6 @@ class TestController extends AppController
             \Yii::$app->session->setFlash('success', 'OK');
             $country->refresh();
         }
-
-        /*      $country->code = 'ES';
-              $country->name = 'Spain';
-              $country->population = 47007367;
-              $country->status = 1;
-        */
-        /*        if($country->save()){
-                    \Yii::$app->session->setFlash('success', 'OK');
-                }else{
-                    \Yii::$app->session->setFlash('danger', 'error');
-                }*/
 
         return $this->render('create-new-country', compact('country'));
     }
@@ -180,7 +115,6 @@ class TestController extends AppController
         } else {
             \Yii::$app->session->setFlash('danger', 'That country in not exist!');
         }
-
 
         return $this->render('delete', compact('country'));
     }

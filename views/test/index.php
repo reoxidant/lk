@@ -11,30 +11,30 @@ use yii\widgets\Pjax;
         <h2>Страница с формой!</h2>
 
         <?php \app\components\HelloWidget::begin(['access' => true]); ?>
-            <h3>Виджет HelloWidget</h3>
+        <h3>Виджет HelloWidget</h3>
         <?php \app\components\HelloWidget::end(); ?>
 
         <?php Pjax::begin(); ?>
 
-        <?= \app\widgets\Alert::widget()?>
+        <?= \app\widgets\Alert::widget() ?>
 
-        <?php /*if (Yii::$app->session->hasFlash('success')): */?><!--
+        <?php /*if (Yii::$app->session->hasFlash('success')): */ ?><!--
             <div class="alert alert-success alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="close">
                     <span aria-hidden="true">&times</span>
                 </button>
-                <?/*= Yii::$app->session->getFlash('success') */?>
+                <? /*= Yii::$app->session->getFlash('success') */ ?>
             </div>
-        <?php /*endif; */?>
+        <?php /*endif; */ ?>
 
-        <?php /*if (Yii::$app->session->hasFlash('error')): */?>
+        <?php /*if (Yii::$app->session->hasFlash('error')): */ ?>
             <div class="alert alert-danger alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="close">
                     <span aria-hidden="true">&times</span>
                 </button>
-                <?/*= Yii::$app->session->getFlash('error') */?>
+                <? /*= Yii::$app->session->getFlash('error') */ ?>
             </div>
-        --><?php /*endif; */?>
+        --><?php /*endif; */ ?>
 
         <?php $form = ActiveForm::begin([
             'id' => 'my-form',

@@ -10,8 +10,8 @@
 </thead>
 <tr>
     <th scope="row">1</th>
-    <td><?= $product->title?></td>
-    <td><?= $product->year?></td>
-    <td><?= $product->price?></td>
+    <td><?= $product->title ?></td>
+    <td><?= $product->year ?></td>
+    <td><?= $product->price ?></td>
 </tr>
 </table>
