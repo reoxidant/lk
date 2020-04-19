@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\ClassProduct;
+use yii\web\NotFoundHttpException;
 
 class ClassProductController extends AppController
 {
@@ -15,9 +16,17 @@ class ClassProductController extends AppController
         return $this->render('index', compact('class_products'));
     }
 
-    public function actionShowClass($id = null)
+    public function actionShowClass($id = null, $alias = null)
     {
-        $class_products = ClassProduct::findOne($id);
+        $class_products_id = ClassProduct::findOne($id);
+        $class_products_alias = ClassProduct::findOne(['alias' => $alias]);
+
+        if(is_null($class_products_id) and is_null($class_products_alias)){
+            throw new NotFoundHttpException('Not exist this id class!');
+        }
+
+        $class_products =  (is_null($class_products_id)) ? $class_products_alias : $class_products_id;
+
         $this->view->title = "Class: ($class_products->title)";
 
         $products = $class_products->getProducts(50000)->all();
